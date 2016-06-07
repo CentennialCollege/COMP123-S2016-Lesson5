@@ -13,8 +13,6 @@ namespace COMP123_S2016_Lesson5
      */
     public class Program
     {
-
-
         /**
          * the main method for our driver class Program
          * 
@@ -24,53 +22,11 @@ namespace COMP123_S2016_Lesson5
          */
         public static void Main(string[] args)
         {
-            //create instance of the Student class
-            Student tommy = new Student("Tommy", 20, "S123456789");
-            tommy.SaysHello();
-
-            Console.WriteLine();
-
-            tommy.Studies();
-
-
-            tommy.Courses.Add(new Course("COMP123", "Programming 2"));
-            tommy.Courses.Add(new Course("COMP125", "Client-Side Web Development"));
-            tommy.Courses.Add(new Course("COMP397", "Web Game Programming"));
-
-            tommy.ShowCourses();
-
-            Console.WriteLine();
-
-            // create instance of the Teacher class
-            Teacher tom = new Teacher("Tom", 47, "T123456789");
-
-            tom.SaysHello();
-
-            Console.WriteLine();
-
-            tom.Teaches();
-
-            List<string> names = new List<string>();
-
-            names.Add("Tom");
-            names.Add("Mary");
-            names.Add("Rutvik");
-
-
-            int count = 0;
-            Console.WriteLine();
-            Console.WriteLine("++++++++++++++++++++++++++++++++++++++");
-            foreach (string name in names)
-            {
-                Console.WriteLine("Name #" + count + " is " + name);
-                count++;
-            }
-            Console.WriteLine("++++++++++++++++++++++++++++++++++++++");
-
-
+            // List that represents deck of cards
             List<Card> Deck = new List<Card>();
 
             CreateDeck(Deck);
+            DisplayDeck(Deck);
 
 
         } // end Main
@@ -118,7 +74,18 @@ namespace COMP123_S2016_Lesson5
 
         } // end CreateDeck method
 
-
+        public static void DisplayDeck(List<Card> deck)
+        {
+            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("+ Current Deck                              +");
+            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++");
+            foreach (Card card in deck)
+            {
+                Console.WriteLine("{0} of {1}",card.Face, card.Suit);
+            }
+            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine();
+        }
 
     } // end Program
 
