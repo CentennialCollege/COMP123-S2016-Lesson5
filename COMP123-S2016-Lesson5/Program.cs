@@ -26,7 +26,10 @@ namespace COMP123_S2016_Lesson5
             List<Card> Deck = new List<Card>();
 
             CreateDeck(Deck);
-            DisplayDeck(Deck);
+            DisplayDeck(Deck); // display initial state of deck
+
+            ShuffleDeck(Deck);
+            DisplayDeck(Deck); // display the shuffled state of deck
 
 
         } // end Main
@@ -74,6 +77,15 @@ namespace COMP123_S2016_Lesson5
 
         } // end CreateDeck method
 
+        /**
+         * <summary>
+         * This method displays a List of Card objects to the Console
+         * </summary>
+         * 
+         * @method DisplayDeck
+         * @param {List<Card>} deck
+         * @returns {void}
+         */
         public static void DisplayDeck(List<Card> deck)
         {
             Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++");
@@ -85,6 +97,35 @@ namespace COMP123_S2016_Lesson5
             }
             Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++");
             Console.WriteLine();
+        }
+
+        /**
+         * <summary>
+         * This method randomly shuffles a List of Card objects
+         * </summary>
+         * 
+         * @method ShuffleDeck
+         * @param {List<Card>} deck
+         * @returns {void}
+         */
+        public static void ShuffleDeck(List<Card> deck)
+        {
+            // creates a pseudo-random number sequence and stores it in random
+            Random random = new Random();
+            // record the number of cards in the deck List
+            int cardCount = deck.Count;
+
+            Console.WriteLine("card count: {0}",cardCount);
+
+            // iterate through the list of cards 
+            for(int currentCard = 0; currentCard < cardCount; currentCard++)
+            {
+                Card tempCard = deck[currentCard]; // copy current card to temp location
+                int randomCard = random.Next(0, cardCount); // get a random card index
+                deck[currentCard] = deck[randomCard]; // copy value from randomCard to currentCard
+                deck[randomCard] = tempCard; // copy current card to random card
+            }
+
         }
 
     } // end Program
