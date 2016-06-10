@@ -42,33 +42,14 @@ namespace COMP123_S2016_Lesson5
          */
         private void _create()
         {
-            string suit = "";
 
-            for (int suitIndex = 0; suitIndex < 4; suitIndex++)
+            foreach (Suits suit in Enum.GetValues(typeof(Suits)))
             {
-                switch (suitIndex)
-                {
-                    case 0:
-                        suit = "hearts";
-                        break;
-                    case 1:
-                        suit = "clubs";
-                        break;
-                    case 2:
-                        suit = "diamonds";
-                        break;
-                    case 3:
-                        suit = "spades";
-                        break;
-
-                } // end suit switch
-
-                for (int face = 1; face < 14; face++)
+                foreach (Faces face in Enum.GetValues(typeof(Faces)))
                 {
                     this.Add(new Card(face, suit)); // anonymous Card object to the list
-                } // end for - face
-
-            } // end for - suit
+                }
+            }
 
         } // end CreateDeck method
 
@@ -131,15 +112,15 @@ namespace COMP123_S2016_Lesson5
          */
          public Card Deal()
         {
-            Card returnedCard = this[0]; // copy the 0th card in the stack to the returnedCard
+            Card topCard = this[0]; // copy the 0th card (top card) in the stack to the returnedCard
 
             // check to see if the deck is not empty
             if(this.Count > 0)
             {
-                this.RemoveAt(0); // remove the 0th Card from deck
+                this.RemoveAt(0); // remove the 0th Card (top card) from deck
             }
 
-            return returnedCard;
+            return topCard;
         }
     }
 }

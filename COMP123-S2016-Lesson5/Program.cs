@@ -33,6 +33,11 @@ namespace COMP123_S2016_Lesson5
             Console.WriteLine();
             deck.Display();
 
+            cardDealt = deck.Deal();
+            Console.WriteLine("Card Delt: {0} of {1}", cardDealt.Face, cardDealt.Suit);
+            Console.WriteLine();
+            deck.Display();
+
         } // end Main
 
         
